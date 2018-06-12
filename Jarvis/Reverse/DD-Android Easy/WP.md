@@ -5,7 +5,7 @@ Jarvis 的逆向题 DD-Android Easy
 反编译后查看java源码
 >在 com/didi_ctf/flagapp下发现FlagActivity.class文件
 其中有两个重要的函数,两个字节数组p,q
-``` 用来加密的函数
+``` java
  private String i()
   {
     int j = 0;
@@ -33,13 +33,13 @@ Jarvis 的逆向题 DD-Android Easy
   
 onClickTest函数,点击时候的反馈函数
 其中最重要的就是if判断
-```
+``` java
 if (this.n.getText().toString().equals(i()))
 ```
 我们发现就是比较输入的字符串与i函数返回的字符串是否相同.
 
 用python写下脚本
-```
+``` python
 p = [-40, -62, 107, 66, -126, 103, -56, 77, 122,
      -107, -24, -127, 72, -63, -98, 64, -24, -5,
      -49, -26, 79, -70, -26, -81, 120, 25, 111,
@@ -93,4 +93,4 @@ for c in aob2:
 print(ans)
 ```
 对到最后的答案
-_DDCTF-3ad60811d87c4a2dba0ef651b2d93476@didichuxing.com_
+**DDCTF-3ad60811d87c4a2dba0ef651b2d93476@didichuxing.com**

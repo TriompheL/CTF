@@ -1,12 +1,12 @@
 Jarvis 的逆向题 DD-Hello
 =======================
 先用file 查看了一下文件
-```
+```shell
 $ file 1.Hello
 1.Hello: Mach-O 64-bit x86_64 executable
 ```
 64位 x86_64系列,直接用IDA打开,里面东西很少就几个函数,我把所有函数都分析了一下
-```
+```c
 	__int64 start()
 {
   printf("Welcome\n");
@@ -24,7 +24,7 @@ int sub_100000C90()
 ```
 输出字符串,这是一个假函数,然后返回打印字符的个数.
 我们发现这两个函数都没有起作用.
-```
+```c
 int sub_100000CE0()
 {
   int result; // eax
@@ -52,7 +52,7 @@ int sub_100000CE0()
 主要有两个关键部分
 >v2 = ((unsigned __int64)((char *)start - (char *)sub_100000C90) >> 2) ^ byte_100001040[0];
 取strat函数和sub_100000C90函数的地址进行运算,最后把值存到v2中
-```
+```c
 if ( !(result & 1) )				
   {
     v1 = 0;
@@ -68,7 +68,7 @@ byte_100001040 字符串已经给出.
  
 
 最后脚本
-```
+```python
 key = [0x41, 0x10, 0x11, 0x11, 0x1B, 0x0A, 0x64, 0x67,
        0x6A, 0x68, 0x62, 0x68, 0x6E, 0x67, 0x68, 0x6B,
        0x62, 0x3D, 0x65, 0x6A, 0x6A, 0x3D, 0x68, 0x4,
